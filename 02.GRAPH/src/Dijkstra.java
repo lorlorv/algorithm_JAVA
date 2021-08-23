@@ -7,6 +7,12 @@ class Graph{
 		this.n = n;
 		maps = new int[n + 1][n + 1];
 		
+		//인접행렬 초기화
+		for(int i=1; i<=n; ++i){
+			for(int j=1; j<=n; ++j){
+				maps[i][j] = Integer.MAX_VALUE; 
+			} 			
+		}		
 	}
 	
 	public void input(int i, int j, int w) {
@@ -27,8 +33,8 @@ class Graph{
 		check[v] = true;
 		
 		//정점에 인접해있고 방문하지 않은 정점 거리 갱신
-		for(int i = 0; i < n; i++) {
-			if(!check[i] && maps[v][i] != 0) {
+		for(int i = 1; i <= n; i++) {
+			if(!check[i] && maps[v][i] != Integer.MAX_VALUE) {
 				distance[i] = maps[v][i];
 			}
 		}
@@ -41,7 +47,7 @@ class Graph{
 			int index = -1;
 			
 			for(int j = 1; j <= n; j++) {
-				if(!check[j] && distance[j] != Integer.MAX_VALUE) {
+				if(!check[j]) {
 					if(distance[j] < min) {
 						min = distance[j];
 						index = j;
@@ -52,7 +58,7 @@ class Graph{
 			check[index] = true;		
 			//distance 갱신
 			for(int j = 1; j <= n; j++) {
-				if(!check[j] && maps[index][j] != 0) {
+				if(!check[j] && maps[index][j] != Integer.MAX_VALUE) {
 					if(distance[j] > distance[index] + maps[index][j]) {
 						distance[j] = distance[index] + maps[index][j];
 					}
