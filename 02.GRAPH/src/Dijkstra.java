@@ -1,3 +1,4 @@
+//Dijkstra skeleton
 class Graph{
 	private int n; //노드들의 수 
 	private int maps[][]; //노드들의 가중치 저장
