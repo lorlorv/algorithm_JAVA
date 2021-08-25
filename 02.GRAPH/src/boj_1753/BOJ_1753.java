@@ -1,20 +1,33 @@
-import java.util.PriorityQueue;
-public class Dijkstra_pq {
+package boj_1753;
 
-	public static void main(String[] args) {
-		Graph g = new Graph(5);
-        g.input(1, 2, 10);
-        g.input(1, 4, 60);
-        g.input(2, 4, 30);
-        g.input(2, 3, 45);
-        g.input(2, 5, 60);
-        g.input(3, 5, 20);
-        g.input(3, 4, 5);
-        g.dijkstra(1);
+import java.util.*;
+import java.io.*;
+public class BOJ_1753 {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			
+		 StringTokenizer st = new StringTokenizer(br.readLine());
+	     int v = Integer.parseInt(st.nextToken());
+	     int e = Integer.parseInt(st.nextToken());
+	     int k = Integer.parseInt(br.readLine());
+	     
+	     graph_1753 g = new graph_1753(v);
+	     for(int i = 0; i < e; i++) {
+	    	 st = new StringTokenizer(br.readLine());
+	         int start = Integer.parseInt(st.nextToken());
+	         int end = Integer.parseInt(st.nextToken());
+	         int weight = Integer.parseInt(st.nextToken());
+	    	 g.input(start, end, weight);
+	     }
+	     
+	     g.dijkstra_1753(k);
+	    	     
 	}
+
 }
 
-class graph_pq{
+class graph_1753{
 	private int n; //노드들의 수 
 	private int maps[][]; //노드들의 가중치 저장
 	
@@ -35,7 +48,7 @@ class graph_pq{
 	}
 	
 	//생성자
-	public graph_pq(int n) { //초기화 역할
+	public graph_1753(int n) { //초기화 역할
 		this.n = n;
 		maps = new int[n + 1][n + 1];
 		
@@ -49,11 +62,10 @@ class graph_pq{
 	
 	public void input(int i, int j, int w) {
 		maps[i][j] = w;
-		maps[j][i] = w;
 	}
 	
 		
-	public void dijkstra_pq(int v) {
+	public void dijkstra_1753(int v) throws IOException {
 		PriorityQueue<Node> pq = new PriorityQueue<>();
 		int distance[] = new int[n + 1];
 		boolean check[] = new boolean[n + 1];
@@ -93,10 +105,16 @@ class graph_pq{
 				}
 			}			
 		}
-		
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		for(int i = 1; i <= n; i++) {
-			System.out.println(i + "번 노드까지 가는 최단 거리  : " + distance[i] + " ");
+			if(distance[i] == Integer.MAX_VALUE)
+				bw.write("INF");
+			else
+				bw.write(Integer.toString(distance[i]));
+			bw.newLine();
 		}
 		
+		bw.flush();
+		bw.close();
 	}
 }
