@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;programmers_lv1.직사각형_별찍기.java&apos; to &apos;lv1_0.java&apos;&#x0A;- Original project: &apos;programmers_lv1&apos;&#x0A;- Original element: &apos;programmers_lv1.직사각형_별찍기.java&apos;&#x0A;- Renamed element: &apos;programmers_lv1.lv1_0.java&apos;" description="Rename compilation unit &apos;직사각형_별찍기.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;programmers_lv1{직사각형_별찍기.java" name="lv1_0.java" references="false" stamp="1644548255547" version="1.0"/>
+</session>
