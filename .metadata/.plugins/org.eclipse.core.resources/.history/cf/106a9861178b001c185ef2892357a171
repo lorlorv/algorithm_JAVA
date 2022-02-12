@@ -1,0 +1,27 @@
+package programmers_lv1;
+
+import java.util.Scanner;
+
+public class lv1_1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        long[] rst = solution(a,b);
+        for(int i = 0; i < b; i++) {
+        	System.out.print(rst[i]);
+        }
+	}
+	public static long[] solution(int x, int n) {
+		//testcase 13,14 fail
+		//혹시 x가 0일 가능성?
+	        long[] answer = {};
+	        answer = new long[n];
+	        for(int i = 0; i < n; i++){
+	            answer[i] = x + x * i;
+	        }
+	        return answer;
+	    }
+}
