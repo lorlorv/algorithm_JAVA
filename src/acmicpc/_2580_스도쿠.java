@@ -22,6 +22,11 @@ import java.util.StringTokenizer;
 2 5 8 3 9 4 7 6 0
 
     1부터 하나씩 넣어보고 ( 중복 허용 ), 검증은 행 하나씩 정렬 후 1부터 9까지 모두 잘 있는지 확인하기 !
+
+    --> (X) 실패 ! (X)
+    1. 0이 최대 81개일 경우 9 ^ 81  --> 시간 복잡도 최악
+    2. 한 행 안에서만 검사하기 때문에 정확하게 맞는 답이라고 할 수 없음
+     
  */
 public class _2580_스도쿠 {
     /*
@@ -67,33 +72,25 @@ public class _2580_스도쿠 {
 
         // (2) 체크해야 할 배열에만 1부터 하나씩 모두 넣어보기
         for (int i = 0; i < answerArray.length; i++) {
-            dfs();
+            dfs(0);
         }
-//        for (int i = 0; i < 9; i++) {
-//            for (int j = 0; j < 9; j++) {
-//                if (sudoku[i][j] == 0) {
-//
-//                    // 1부터 하나씩 넣어보기
-//                    for (int target = 1; target < 10; target++) { // 넣어볼 숫자 : target
-//                        dfs(target, i, j);
-//                    }
-//                }
-//            }
-//        }
-
 
     }
 
     // 백트래킹
-    static void dfs() {
+    static void dfs(int count) {
         // 1. 체크인하기 (visited 필요없음, 중복 허용)
-        selectedNum++;
 
         // 2. 목적지인가? (규칙에 맞는지 확인하기)
-        if (selectedNum == answerArray.length) {
+        if (count == answerArray.length) {
+            for (int k : answerArray) {
+                System.out.print(k + " ");
+            }
+            System.out.println();
             // 2-1. 전체를 확인하기 위해서 0에 배열 순서대로 숫자 넣고 체크하기
             fillTempArray();
             if (checkAnswer()) {
+                System.out.println("RESULT");
                 for (int i = 0; i < 9; i++) {
                     for (int j = 0; j < 9; j++) {
                         System.out.print(tempSudoku[i][j] + " ");
@@ -101,14 +98,19 @@ public class _2580_스도쿠 {
                     System.out.println();
                 }
             }
+
+//            selectedNum = 0;
+            return;
         } else { // 3. 연결된 곳을 순회
             for (int k = 0; k < 9; k++) {
-                dfs();
+                answerArray[count]= k+ 1;
+//                selectedNum++;
+                dfs(count+1);
             }
 
         }
 
-        selectedNum--;
+//        selectedNum--;
     }
 
     // 2-1. 배열에 넣어보기 (원본 배열에 영향가지 않도록 temp 배열로 깊은 복사 후 체크해보기)
@@ -124,6 +126,16 @@ public class _2580_스도쿠 {
                 }
             }
         }
+
+//        for (int i = 0; i < 9; i++) {
+//            for (int j = 0; j < 9; j++) {
+//                System.out.print(tempSudoku[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
+//
+//        System.out.println();
+
     }
 
     // 2-2. 한 행씩 정렬해본 후 -> 1 2 3 4 5 6 7 8 9 가 모두 중복없이 존재하는 지 확인 -> True
