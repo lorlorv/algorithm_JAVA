@@ -7,7 +7,7 @@ src/sds/
 *.xml
 *.idea
 test/
-/src/acmicpc/_3055_탈출_fail.java
+/src/acmicpc/algobasic/_3055_탈출_fail.java
 
 ### Eclipse ###
 .apt_generated

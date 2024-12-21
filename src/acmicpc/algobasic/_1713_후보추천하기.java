@@ -1,4 +1,4 @@
-package acmicpc;
+package acmicpc.algobasic;
 
 import java.io.BufferedReader;
 import java.io.IOException;

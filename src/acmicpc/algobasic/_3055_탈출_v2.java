@@ -1,4 +1,4 @@
-package acmicpc;//  탈출
+package acmicpc.algobasic;//  탈출
 
 import java.io.BufferedReader;
 import java.io.IOException;
