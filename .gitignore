@@ -8,6 +8,7 @@ src/sds/
 *.idea
 test/
 /src/acmicpc/algobasic/_3055_탈출_fail.java
+/src/acmicpc/datastructure/_2042_구간합구하기_v2.java
 
 ### Eclipse ###
 .apt_generated
